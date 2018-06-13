@@ -44,7 +44,7 @@ public class Szorzas_ENY4G2Test {
      
     @Test
     public void elsoTeszt() {
-        assertEquals(0, multiplyNaturals(1, 2));
+        assertEquals(2, multiplyNaturals(1, 2));
     }
     
     @Test

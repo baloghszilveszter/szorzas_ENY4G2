@@ -17,9 +17,12 @@ public class Szorzas_ENY4G2 {
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
-    public static int multiplyNaturals (int First, int Second) {
-        return 0;
+
+    public static int multiplyNaturals(int First, int Second) {
+        if (First >= 0 && Second >= 0) {
+            return First * Second;
+        } else {
+            return -1;
+        }
     }
-    
 }
