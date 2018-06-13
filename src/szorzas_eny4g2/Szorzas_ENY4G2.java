@@ -18,4 +18,8 @@ public class Szorzas_ENY4G2 {
         // TODO code application logic here
     }
     
+    public static int multiplyNaturals (int First, int Second) {
+        return 0;
+    }
+    
 }
