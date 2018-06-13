@@ -15,7 +15,7 @@ public class Szorzas_ENY4G2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Szorzas_GUI gui = new Szorzas_GUI();
     }
 
     public static int multiplyNaturals(int First, int Second) {
