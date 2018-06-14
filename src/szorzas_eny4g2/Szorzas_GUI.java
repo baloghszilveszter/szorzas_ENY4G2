@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -45,9 +46,11 @@ public class Szorzas_GUI {
     private final JButton szamitasButton = new JButton("Számítás!");
     private JProgressBar progressBar = new JProgressBar();
     private JTable scoreTable = new JTable(new DefaultTableModel(new Object[]{"Első szám", "Második szám", "Eredmény"}, 0));
+    private JScrollPane scrollpane = new JScrollPane(scoreTable);
+    private int score;
 
     public Szorzas_GUI() {
-        frame.setSize(1000, 300);
+        frame.setSize(1100, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
         frame.add(tabbedPane);
@@ -63,7 +66,7 @@ public class Szorzas_GUI {
         progressBar.setValue(0);
         progressBar.setStringPainted(true);
         szorzasPanel.add(progressBar);
-        szorzasPanel.add(scoreTable);
+        szorzasPanel.add(scrollpane);
 
         aboutPanel.add(aboutText);
 
@@ -74,10 +77,10 @@ public class Szorzas_GUI {
             public void actionPerformed(ActionEvent e) {
                 int firstValue = (int) firstSpinner.getValue();
                 int secondValue = (int) secondSpinner.getValue();
-                int score = Szorzas_ENY4G2.multiplyNaturals(firstValue, secondValue);
+                score = Szorzas_ENY4G2.multiplyNaturals(firstValue, secondValue);
                 updateBar();
                 updateTable(firstValue, secondValue, score);
-                JOptionPane.showMessageDialog(frame, "A szorzás eredménye: " + score, "Szorzateredmény", INFORMATION_MESSAGE);
+
             }
         });
 
@@ -95,15 +98,17 @@ public class Szorzas_GUI {
                     });
                     i++;
                 }
-
+                JOptionPane.showMessageDialog(frame, "A szorzás eredménye: " + score, "Szorzateredmény", INFORMATION_MESSAGE);
             } catch (InterruptedException | InvocationTargetException ex) {
                 Logger.getLogger(Szorzas_GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
         t.start();
     }
-        private void updateTable(int first, int second, int score) {
-        DefaultTableModel model = (DefaultTableModel)scoreTable.getModel();
+
+    private void updateTable(int first, int second, int score) {
+        DefaultTableModel model = (DefaultTableModel) scoreTable.getModel();
+        scoreTable.setEnabled(false);
         model.addRow(new Object[]{first, second, score});
     }
 }
