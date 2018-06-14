@@ -13,7 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
 import javax.swing.SpinnerNumberModel;
 
 /**
@@ -23,20 +26,31 @@ import javax.swing.SpinnerNumberModel;
 public class Szorzas_GUI {
         
     private JFrame frame = new JFrame("Szorzás");
+    private final JTabbedPane tabbedPane = new JTabbedPane();
+    private final JPanel szorzasPanel = new JPanel(new FlowLayout());
+    private final JPanel aboutPanel = new JPanel(new FlowLayout());
+    
+    private JTextArea aboutText = new JTextArea("Balogh Szilveszter\nszili@szili.eu");
+    
     private JSpinner firstSpinner = new JSpinner(new SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1));
-    private JLabel szorzasLabel = new JLabel("*");
+    private final JLabel szorzasLabel = new JLabel("*");
     private JSpinner secondSpinner = new JSpinner(new SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1));
-    private JButton szamitasButton = new JButton("Számítás!");
+    private final JButton szamitasButton = new JButton("Számítás!");
     
     public Szorzas_GUI() {
         frame.setSize(500, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new FlowLayout());
+        frame.add(tabbedPane);
+        tabbedPane.addTab("Szorzás", szorzasPanel);
+        tabbedPane.addTab("About", aboutPanel);
         
-        frame.add(firstSpinner);
-        frame.add(szorzasLabel);
-        frame.add(secondSpinner);
-        frame.add(szamitasButton);
+        szorzasPanel.add(firstSpinner);
+        szorzasPanel.add(szorzasLabel);
+        szorzasPanel.add(secondSpinner);
+        szorzasPanel.add(szamitasButton);
+        
+        aboutPanel.add(aboutText);
         
         frame.setVisible(true);
         
